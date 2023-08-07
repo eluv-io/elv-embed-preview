@@ -14,9 +14,6 @@ class RootStore {
   constructor() {
     makeObservable(this, {
       client: observable,
-      loggedIn: observable,
-      userProfile: observable,
-      walletClient: observable,
       loaded: observable
     });
 
@@ -40,6 +37,22 @@ class RootStore {
       this.loaded = true;
     }
   });
+
+  // LoadData = flow(function * () {
+  //   gridJson.items.forEach(({url}) => {
+  //     const objectId = new URL(url).searchParams.get("oid");
+  //     this.LoadItemData({objectId});
+  //   });
+  // });
+  //
+  // LoadItemData = flow(function * ({objectId}) {
+  //   const libraryId = yield this.client.ContentObjectLibraryId({objectId});
+  //   const meta = yield this.client.ContentObjectMetadata({
+  //     libraryId,
+  //     objectId,
+  //     metadataSubtree: "/"
+  //   });
+  // });
 }
 
 export const rootStore = new RootStore();

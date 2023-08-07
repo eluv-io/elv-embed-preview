@@ -1,3 +1,13 @@
+@keyframes backgroundAnimation {
+  0% {
+    background-color: $gray5;
+  }
+
+  100% {
+    background-color: $black;
+  }
+}
+
 * {
   -webkit-overflow-scrolling: touch;
 
@@ -51,4 +61,9 @@ body,
 main {
   padding: 2rem;
   width: 100%;
+}
+
+.player {
+  animation: backgroundAnimation 3s ease;
+  background-color: $black;
 }
