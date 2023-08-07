@@ -1,5 +1,5 @@
 import {makeObservable, flow, configure, observable} from "mobx";
-import {FrameClient} from "@eluvio/elv-client-js/src/FrameClient";
+import {ElvClient} from "@eluvio/elv-client-js";
 
 // Force strict mode so mutations are only allowed within actions.
 configure({
@@ -22,10 +22,7 @@ class RootStore {
 
   Initialize = flow(function * () {
     try {
-      this.client = new FrameClient({
-        target: window.parent,
-        timeout: 30
-      });
+      this.client = yield ElvClient.FromNetworkName({networkName: "main"});
 
       this.network = yield this.client.NetworkInfo();
 
