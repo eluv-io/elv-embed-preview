@@ -16,6 +16,7 @@ const PlayerDialog = ({videoUrl, setVideoUrl, open, setOpen}) => {
       size="LG"
     >
       <iframe
+        allow="autoplay"
         loading="lazy"
         className="player"
         src={videoUrl}
