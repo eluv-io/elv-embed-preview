@@ -1,5 +1,4 @@
 const Path = require("path");
-const webpack = require("webpack");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 
@@ -36,19 +35,16 @@ module.exports = {
       cache: false,
       filename: "index.html",
       favicon: "./src/static/icons/favicon.png",
-    }),
-    new webpack.ProvidePlugin({
-      process: "process/browser"
     })
   ],
   resolve: {
     alias: {
-      "process": "process/browser",
       Assets: Path.resolve(__dirname, "src/static"),
       Components: Path.resolve(__dirname, "src/components")
     },
     fallback: {
       "fs": false,
+      "process/browser": false,
       "stream": require.resolve("stream-browserify"),
       "crypto": require.resolve("crypto-browserify")
     },
