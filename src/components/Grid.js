@@ -39,18 +39,19 @@ const Grid = observer(() => {
       <h1>Eluvio Embed Preview</h1>
       <div className="grid__items">
         {
-          (embedItems || []).items.map(({url, title}) => (
-            <Tile
-              key={url}
-              title={title}
-              // href={url}
-              description={url}
-              OnClick={() => {
-                setVideoUrl(url);
-                setOpen(true);
-              }}
-            />
-          ))
+          (embedItems || []).items
+            .sort((a, b) => a.title.localeCompare(b.title))
+            .map(({url, title}) => (
+              <Tile
+                key={url}
+                title={title}
+                description={url}
+                OnClick={() => {
+                  setVideoUrl(url);
+                  setOpen(true);
+                }}
+              />
+            ))
         }
       </div>
       <PlayerDialog open={open} videoUrl={videoUrl} setVideoUrl={setVideoUrl} setOpen={setOpen} />
